@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-center fs-2 display-2 text-capitalize mt-5">Welcome To Profile,
+    {{ user_profile.user.username }}
+</h1>
+<div class="row mt-5 w-100">
+    <div class="col-md-4 px-2">
+        {% if user_profile.profile_image %}
+        <img src="{{ user_profile.profile_image.url }}" style="height: 350px; width: 80%; border-radius: 10px;"
+            alt="Profile Image">
+        {% else %}
+        <p>No profile image available</p>
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <div class="card-body ">
+            <h3 class="fs-3 display-4 text-center">Profile Information</h3>
+            <hr>
+            <p class="card-title fs-4 display-4 mt-4">Username : <small>{{ user_profile.user.username }}</small>
+            <p>
+            <p class="card-text fs-4 display-4">First Name : <small>{{ user_profile.user.first_name }}</small></p>
+            <p class="card-text fs-4 display-4">Last Name : <small>{{ user_profile.user.last_name }}</small></p>
+            <p class="card-text fs-4 display-4">Email : <small> {{ user_profile.user.email }}</small></p>
+            <a href="#" class="text-decoration-none">
+                <button class="btn btn-outline-danger text-uppercase fw-semibold" type="submit">Edit Profile</button>
+            </a>
+            <a href="{% url 'add_project' %}" class="text-decoration-none">
+                <button class="btn btn-outline-secondary text-uppercase fw-semibold">Add Project</button>
+            </a>
+            <a href="{% url 'add_blog' %}" class="text-decoration-none">
+                <button class="btn btn-outline-success text-uppercase fw-semibold">Add Blog</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
