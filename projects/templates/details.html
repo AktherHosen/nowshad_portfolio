@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mb-3" style="width: 100%;">
+    <h1 class="text-center fs-2 display-3 text-uppercase mt-3">Details</h1>
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{project.screenshoot.url}}" style="height: 400px;" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Title :{{project.title}}</h5>
+                <p class="card-text">Description :{{project.description}}</p>
+                <p class="card-text">Category : {{project.category}}</p>
+                <a href="{{project.project_url}}" target="_blank" class="text-decoration-none text-uppercase">live
+                    Site</a> ||
+                <a href="{% url 'create_review' project.id %}" target="_blank"
+                    class="text-decoration-none text-uppercase">Add
+                    Review</a>
+
+                <h3 class="fs-5 display-5 text-decoration-underline mt-3 text-uppercase text-center">All Reviews</h3>
+                {% for review in reviews %}
+                <div class="border border-1 rounded shadow-sm mb-2">
+                    <div class="p-2">
+                        <p> <span class="text-primary fw-semibold">Review</span> : {{review.reviews}}</p>
+                        <p> <span class="text-primary fw-semibold">Rating</span> : {{review.ratings}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

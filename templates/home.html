@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="fs-3 display-3 text-center mt-3">Projects</h1>
+<hr style="width: auto;">
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+    {% for project in projects %}
+    <div class="col">
+        <div class="card ">
+            <img src="{{project.screenshoot.url}}" class="card-img-top" style="height: 300px;" alt="">
+            <div class="card-body">
+                <a href="{% url 'details' project.id %}">
+                    <h5 class="card-title">{{project.title}}</h5>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
