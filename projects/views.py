@@ -2,9 +2,20 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import PortfolioProject, ProjectReview
 from .forms import ProjectForm,ReviewForm
 # Create your views here.
+
 def portfolio_project(request):
     projects = PortfolioProject.objects.all()
     return render(request, 'projects.html',{'projects':projects})
+
+def add_project(request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()  
+            return redirect('projects')
+    else:
+        form = ProjectForm()
+    return render(request, 'add_project.html', {'form': form})
 
 def portfolio_project_details(request,project_id):
     project = get_object_or_404(PortfolioProject, pk = project_id)

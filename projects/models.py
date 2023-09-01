@@ -16,10 +16,20 @@ class PortfolioProject(models.Model):
     
     def __str__(self):
         return self.title
-
+    
+RATING_CHOICES = [
+        (0, '0'),
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+        (6, '6'),
+        (7, '7'),
+    ]
 class ProjectReview(models.Model):
     reviews = models.CharField(max_length=200)
-    ratings = models.IntegerField()
+    ratings = models.IntegerField(choices=RATING_CHOICES)
     project = models.ForeignKey(PortfolioProject, on_delete=models.CASCADE)
     def __str__(self):
         return self.reviews
