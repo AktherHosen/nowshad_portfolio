@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center fs-2 display-3 text-uppercase mt-3">Add Skill</h1>
+
+<div class="d-flex justify-content-center align-items-center">
+    <div class="w-50">
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit" class="btn btn-outline-secondary">Add Skill</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import RegistrationForm, UserProfileEditForm, UserUpdateEditForm
+from .forms import RegistrationForm, UserProfileEditForm, UserUpdateEditForm,SkillForm 
 from .models import UserProfile
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages  
@@ -71,3 +71,14 @@ def edit_profile(request):
         profile_form = UserProfileEditForm(instance=user_profile)
 
     return render(request, 'edit_profile.html', {'user_form': user_form, 'profile_form': profile_form})
+
+def add_skill(request):
+    if request.method == 'POST':
+        form = SkillForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = SkillForm()
+    
+    return render(request, 'add_skill.html', {'form': form})

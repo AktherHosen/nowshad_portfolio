@@ -24,6 +24,18 @@
     </div>
 </div>
 
+<h1 class="text-center fs-2 display-3  mt-3">My Skills</h1>
+{% for skill in skills %}
+<div class="d-flex justify-content-center">
+    <div class="w-100">
+        <h2 class="fs-5 display-3">{{skill.name}}</h2>
+        <div class="progress mb-2" role="progressbar" aria-label="Skill Progress" aria-valuenow="{{ skill.percentage }}"
+            aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" style="width: {{ skill.percentage }}%">{{ skill.percentage }}%</div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 <h1 class="text-center fs-2 display-3  mt-3">Projects</h1>
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">

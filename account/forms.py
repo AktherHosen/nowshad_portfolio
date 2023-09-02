@@ -1,8 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import UserProfile
-
+from .models import UserProfile, Skill
 class RegistrationForm(UserCreationForm):
     profile_image = forms.ImageField(required=False, help_text="Upload a profile image")
     class Meta:
@@ -50,3 +49,18 @@ class UserProfileEditForm(forms.ModelForm):
         widgets = {
             'profile_image': forms.ClearableFileInput(attrs={'class': 'form-control mb-2'}),
         }
+        
+class SkillForm(forms.ModelForm):
+    class Meta:
+        model = Skill
+        fields = ['name', 'percentage']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control mb-2'}),
+            'percentage': forms.NumberInput(attrs={'class': 'form-control mb-2'}),  
+        }
+
+    def clean_percentage(self):
+        percentage = self.cleaned_data.get('percentage')
+        if percentage > 100:
+            raise forms.ValidationError("Percentage cannot exceed 100%.")
+        return percentage
