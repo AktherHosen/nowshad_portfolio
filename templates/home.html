@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% load static %}
 <div class="d-flex row mt-5 mb-3">
     <div class="col-md-6 col-12 mb-sm-5 text-center">
         <div class="w-100 mt-4">
+            {% if user.is_authenticated %}
             <img src="{{ user_profile.profile_image.url }}" style="width: 50%; height: 300px; border-radius: 50%;"
                 alt="User Profile Image">
+            {% else %}
+            <img src="{% static '/images/profile/nowshad.png' %}" style="width: 50%; height: 300px; border-radius: 50%;"
+                alt="User Profile Image">
+            {% endif %}
         </div>
     </div>
     <div class="col-md-6 col-12">

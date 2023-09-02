@@ -22,16 +22,20 @@
             <p class="card-text fs-4 display-4">Last Name : <small>{{ user_profile.user.last_name }}</small></p>
             <p class="card-text fs-4 display-4">Email : <small> {{ user_profile.user.email }}</small></p>
             <a href="{% url 'edit_profile' %}" class="text-decoration-none">
-                <button class="btn btn-outline-danger text-uppercase fw-semibold" type="submit">Edit Profile</button>
+                <button class="btn btn-outline-danger text-uppercase fw-semibold btn-sm" type="submit">Edit
+                    Profile</button>
             </a>
             <a href="{% url 'add_project' %}" class="text-decoration-none">
-                <button class="btn btn-outline-secondary text-uppercase fw-semibold">Add Project</button>
+                <button class="btn btn-outline-secondary text-uppercase fw-semibold btn-sm">Add Project</button>
             </a>
             <a href="{% url 'add_blog' %}" class="text-decoration-none">
-                <button class="btn btn-outline-success text-uppercase fw-semibold">Add Blog</button>
+                <button class="btn btn-outline-success text-uppercase fw-semibold btn-sm">Add Blog</button>
             </a>
             <a href="{% url 'add_skill' %}" class="text-decoration-none">
-                <button class="btn btn-outline-success text-uppercase fw-semibold">Add Skill</button>
+                <button class="btn btn-outline-success text-uppercase fw-semibold btn-sm">Add Skill</button>
+            </a>
+            <a href="{% url 'show_skills' %}" class="text-decoration-none">
+                <button class="btn btn-outline-success text-uppercase fw-semibold btn-sm">Show Skills</button>
             </a>
         </div>
     </div>

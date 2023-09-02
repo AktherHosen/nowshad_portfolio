@@ -1,8 +1,8 @@
-from django.shortcuts import render,redirect
-from .forms import RegistrationForm, UserProfileEditForm, UserUpdateEditForm,SkillForm 
-from .models import UserProfile
+from django.shortcuts import render,redirect,get_object_or_404
+from .forms import RegistrationForm, UserProfileEditForm, UserUpdateEditForm,SkillForm,EditSkill 
+from .models import UserProfile, Skill
 from django.contrib.auth import login,logout,authenticate
-from django.contrib import messages  
+from django.contrib import messages
 # Create your vifews here.
 
 def register(request):
@@ -72,6 +72,10 @@ def edit_profile(request):
 
     return render(request, 'edit_profile.html', {'user_form': user_form, 'profile_form': profile_form})
 
+def show_skills(request):
+    skills = Skill.objects.all()
+    return render(request, 'show_skills.html', {'skills':skills})
+
 def add_skill(request):
     if request.method == 'POST':
         form = SkillForm(request.POST)
@@ -82,3 +86,18 @@ def add_skill(request):
         form = SkillForm()
     
     return render(request, 'add_skill.html', {'form': form})
+
+def edit_skill(request, skill_id):
+    skill = get_object_or_404(Skill, pk=skill_id)
+
+    if request.method == 'POST':
+        form = EditSkill(request.POST, instance=skill)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  
+    else:
+        form = EditSkill(instance=skill)
+
+    return render(request, 'edit_skill.html', {'form': form, 'skill': skill})
+
+

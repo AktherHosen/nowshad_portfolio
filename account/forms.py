@@ -64,3 +64,12 @@ class SkillForm(forms.ModelForm):
         if percentage > 100:
             raise forms.ValidationError("Percentage cannot exceed 100%.")
         return percentage
+    
+class EditSkill(forms.ModelForm):
+    class Meta:
+        model = Skill
+        fields = ['name', 'percentage']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control mb-2'}),
+            'percentage': forms.NumberInput(attrs={'class': 'form-control mb-2'}),  
+        }
