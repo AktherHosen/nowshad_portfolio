@@ -3,6 +3,7 @@ from .forms import RegistrationForm, UserProfileEditForm, UserUpdateEditForm,Ski
 from .models import UserProfile, Skill
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
+from contact.models import ContactMessage
 # Create your vifews here.
 
 def register(request):
@@ -101,3 +102,11 @@ def edit_skill(request, skill_id):
     return render(request, 'edit_skill.html', {'form': form, 'skill': skill})
 
 
+def all_messages(request):
+    messages = ContactMessage.objects.all()
+    return render(request, 'messages.html',{'messages':messages})
+
+def delete_message(request,message_id):
+    blog = get_object_or_404(ContactMessage, id=message_id)
+    blog.delete()
+    return redirect('messages')

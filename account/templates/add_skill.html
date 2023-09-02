@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
 {% block content %}
+{% if request.user.is_staff %}
 <h1 class="text-center fs-2 display-3 text-uppercase mt-3">Add Skill</h1>
 
 <div class="d-flex justify-content-center align-items-center">
@@ -12,5 +12,12 @@
         </form>
     </div>
 </div>
-
+{% else %}
+<div class="w-100 d-flex justify-content-center mt-5">
+    <div class="alert alert-danger text-center " role="alert">
+        Sorry, this page is only available to admin. <br>
+        you can visit other page
+    </div>
+</div>
+{% endif %}
 {% endblock content %}

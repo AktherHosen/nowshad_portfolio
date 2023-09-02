@@ -9,4 +9,6 @@ urlpatterns = [
     path('add_skill/', views.add_skill, name='add_skill'),
     path('show_skills/', views.show_skills, name='show_skills'),
     path('edit_skill/<int:skill_id>/', views.edit_skill, name='edit_skill'),
+    path('messages/', views.all_messages, name='messages'),
+    path('delete_message/<int:message_id>/', views.delete_message, name='delete_message'),
 ]
