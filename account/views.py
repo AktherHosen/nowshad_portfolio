@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import RegistrationForm
+from .forms import RegistrationForm, UserProfileEditForm, UserUpdateEditForm
 from .models import UserProfile
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages  
@@ -49,3 +49,25 @@ def profile(request):
         return render(request, 'profile.html', {'user_profile': user_profile})
     else:
         return redirect('signin')
+    
+
+def edit_profile(request):
+    user = request.user
+    user_profile = user.userprofile
+    if request.method == 'POST':
+        user_form = UserUpdateEditForm(request.POST, instance=user)
+        profile_form = UserProfileEditForm(request.POST, request.FILES, instance=user_profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Profile updated successfully.')
+            return redirect('profile') 
+        else:
+            messages.error(request, 'There was an error updating your profile. Please correct the errors.')
+
+    else:
+        user_form = UserUpdateEditForm(instance=user)
+        profile_form = UserProfileEditForm(instance=user_profile)
+
+    return render(request, 'edit_profile.html', {'user_form': user_form, 'profile_form': profile_form})

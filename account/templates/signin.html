@@ -1,25 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if messages %}
-<div class="alert alert-danger">
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
+
+<h1 class="text-center fs-2 display-3 text-uppercase mt-3">Login</h1>
+
+<div class="d-flex justify-content-center align-items-center">
+    <div class="w-50">
+        {% if messages %}
+        <div class="alert alert-danger text-center" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="userpass" class="form-label">Password</label>
+                <input type="password" class="form-control" id="userpass" name="password">
+            </div>
+            <button type="submit" class="btn btn-outline-success text-uppercase">Login</button>
+        </form>
+    </div>
 </div>
-{% endif %}
-<form method="post">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label for="username" class="form-label">User Name</label>
-        <input type="text" class="form-control" id="username" name="username">
-    </div>
-    <div class="mb-3">
-        <label for="userpass" class="form-label">Password</label>
-        <input type="password" class="form-control" id="userpass" name="password">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
 {% endblock content %}

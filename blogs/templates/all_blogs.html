@@ -1,15 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text-center fs-2 display-3 text-uppercase mt-3">All Blogs</h1>
-{% for blog in blogs %}
-<div class="card p-3 mb-3 shadow-sm">
-    <div class="card-body">
-        <h5 class="card-title">{{blog.title}}</h5>
-        <p class="card-text">T{{blog.description}}</p>
+<h1 class="text-center fs-2 display-3  mt-3">All Blogs</h1>
+<div class="card border-0 mt-3">
+    {% for blog in blogs %}
+    <div class="row shadow-sm rounded mb-4">
+        <div class="col-md-4">
+            <img src="{{blog.blog_image.url}}" style="height: 200px; width: 100%;" class="img-fluid rounded" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h1 class="card-title fs-2 display-2 fw-semibold">{{blog.title}}</h1>
+                <p class="card-text fs-5 display-4 mt-2">
+                    {{blog.description}}
+                </p>
+                <p class="card-text fs-5 display-4">
+                    Post at <small> {{blog.created_at}} </small>
+                </p>
+            </div>
+        </div>
+
     </div>
-    <img src="{{blog.blog_image.url}}" style="height: 200px; object-fit: cover;" class="card-img-bottom" alt="...">
-    <p class="card-text"><small class="text-body-secondary">Last updated {{blog.updated_at}}</small></p>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock content %}
