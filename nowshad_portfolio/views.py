@@ -4,10 +4,8 @@ from account.models import UserProfile, Skill, Resume
 from django.db.models import Avg
 # Create your views here.
 def home(request):
-    # Fetch all skills
     skills = Skill.objects.all()
     resume = Resume.objects.first()
-    # Fetch and sort projects by average ratings
     projects_with_avg_ratings = PortfolioProject.objects.annotate(avg_rating=Avg('projectreview__ratings'))
     projects_sorted_by_rating = projects_with_avg_ratings.order_by('-avg_rating')
 
