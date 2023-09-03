@@ -11,4 +11,5 @@ urlpatterns = [
     path('edit_skill/<int:skill_id>/', views.edit_skill, name='edit_skill'),
     path('messages/', views.all_messages, name='messages'),
     path('delete_message/<int:message_id>/', views.delete_message, name='delete_message'),
+    path('upload_resume/',views.upload_resume, name='upload_resume'),
 ]

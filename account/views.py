@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .forms import RegistrationForm, UserProfileEditForm, UserUpdateEditForm,SkillForm,EditSkill 
-from .models import UserProfile, Skill
+from .forms import RegistrationForm, UserProfileEditForm, UserUpdateEditForm,SkillForm,EditSkill, ResumeForm
+from .models import UserProfile, Skill, Resume
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
 from contact.models import ContactMessage
@@ -110,3 +110,21 @@ def delete_message(request,message_id):
     blog = get_object_or_404(ContactMessage, id=message_id)
     blog.delete()
     return redirect('messages')
+
+
+def upload_resume(request):
+    if request.method == 'POST':
+        form = ResumeForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            existing_resume = Resume.objects.first()
+            if existing_resume:
+                existing_resume.file.delete()
+                existing_resume.delete()
+
+            form.save()
+            return redirect('profile')
+    else:
+        form = ResumeForm()
+
+    return render(request, 'resume_upload.html', {'form': form})

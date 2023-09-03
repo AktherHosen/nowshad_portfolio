@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import UserProfile, Skill
+from .models import UserProfile, Skill, Resume
 
 class RegistrationForm(UserCreationForm):
     profile_image = forms.ImageField(required=False, help_text="Upload a profile image")
@@ -75,3 +75,16 @@ class EditSkill(forms.ModelForm):
             'percentage': forms.NumberInput(attrs={'class': 'form-control mb-2'}),  
         }
         
+
+class ResumeForm(forms.ModelForm):
+    class Meta:
+        model = Resume
+        fields = ['name', 'file']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control mb-2'}),
+            'file': forms.ClearableFileInput(attrs={'class': 'form-control mb-2'}),
+        }
+
+
+
+
