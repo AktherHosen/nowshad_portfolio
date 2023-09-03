@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import PortfolioProject,Category,ProjectReview
+from . models import PortfolioProject,Category, ProjectReview
 # Register your models here.
 
 admin.site.register(Category)
