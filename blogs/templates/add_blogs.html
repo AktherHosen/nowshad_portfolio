@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text-center fs-2 display-3 text-uppercase mt-3">Add a Blog</h1>
-<div class="d-flex justify-content-center align-content-center h-100">
-    <div class="w-50">
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="col-md-6">
+        <h1 class="text-center fs-2 display-3 text-uppercase mt-5 mb-4">Add a Blog</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form}}
+            {{ form }}
             <button class="btn btn-outline-success mt-2" type="submit">Add Blog</button>
         </form>
     </div>

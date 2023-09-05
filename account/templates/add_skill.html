@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 {% if request.user.is_staff %}
-<h1 class="text-center fs-2 display-3 text-uppercase mt-3">Add Skill</h1>
+<h1 class="text-center fs-2 display-3 text-uppercase mt-5">Add Skill</h1>
 
-<div class="d-flex justify-content-center align-items-center">
-    <div class="w-50">
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="w-75 mt-3">
         <form method="post">
             {% csrf_token %}
             {{form}}
