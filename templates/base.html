@@ -36,19 +36,19 @@
                         <a class="nav-link text-uppercase" href="{% url 'contact' %}">Contact</a>
                     </li>
                     <li class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Hello {{request.user.first_name}}
                         </button>
-                        <ul class="dropdown-menu ">
-                            <li class="me-0">
+                        <ul class="dropdown-menu">
+                            <li class="">
                                 <a class="dropdown-item text-uppercase text-center"
                                     href="{% url 'profile' %}">Profile</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li class="me-0">
+                            <li class="">
                                 <a class="dropdown-item text-uppercase text-center" href="{% url 'logout' %}">Logout</a>
                             </li>
                         </ul>
