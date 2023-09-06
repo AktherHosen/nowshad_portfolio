@@ -101,6 +101,10 @@ def edit_skill(request, skill_id):
 
     return render(request, 'edit_skill.html', {'form': form, 'skill': skill})
 
+def delete_skill(request,skill_id):
+    skill = get_object_or_404(Skill, pk=skill_id)
+    skill.delete()
+    return redirect('show_skills')
 
 def all_messages(request):
     messages = ContactMessage.objects.all()

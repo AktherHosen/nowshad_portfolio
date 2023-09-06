@@ -58,3 +58,7 @@ def create_review(request, project_id):
             return render(request, 'reviewform.html',{'form':ReviewForm(), 'project':project, 'error' : 'Bad Data'})
 
 
+def delete_review(request,review_id):
+    review = get_object_or_404(ProjectReview, pk=review_id)
+    review.delete()
+    return redirect('projects')
