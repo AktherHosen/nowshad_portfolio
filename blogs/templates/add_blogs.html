@@ -1,16 +1,20 @@
-{% extends "base.html" %}
+{% extends "dashboard.html" %}
 
-{% block content %}
-<div class="">
-    <h1 class="text-center fs-2 display-3 text-uppercase mt-5 mb-4">Add a Blog</h1>
+{% block dynamic %}
+<div>
+    <h1 class="text-center fs-3 text-uppercase mt-1 mb-3">Add a Blog</h1>
     <div class=" d-flex justify-content-center align-items-center">
-        <div class="w-75">
+        <div class="w-50">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form }}
-                <button class="btn btn-outline-success mt-2" type="submit">Add Blog</button>
+                <div class="w-100">
+                    <button class="btn  mt-2 w-100" style="background-color: #7163CA; color: #fff;" type="submit">
+                        Add Blog <i class="fas fa-solid fa-plus"></i>
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 </div>
-{% endblock content %}
+{% endblock dynamic %}

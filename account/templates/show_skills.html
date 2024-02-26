@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "dashboard.html" %}
 
-{% block content %}
+{% block dynamic %}
 {% if request.user.is_staff %}
-<h1 class="text-center fs-2 display-3  mt-3">All Skills</h1>
+<h1 class="text-center fs-3 text-uppercase">All Skills</h1>
 <div class="row mt-3">
     {% for skill in skills %}
     <div class="col-12 col-md-4 mb-3">
@@ -11,10 +11,12 @@
                 <h5 class="card-title fs-4 display-3">Skill : {{skill.name}}</h5>
                 <h6 class="card-subtitle mb-2 fs-4 display-3 text-body-secondary">Percentage : {{skill.percentage}}</h6>
                 <a href="{% url 'edit_skill' skill.id %}">
-                    <button class="btn btn-outline-warning btn-sm">Edit Skill</button>
+                    <button class="btn btn-sm" style="background-color: #7163CA; color: #fff;">
+                        <i class=" fas fa-solid fa-pen"></i>
+                    </button>
                 </a>
-                <a href="{% url 'delete_skill' skill.id %}">
-                    <button class="btn btn-outline-danger btn-sm">Delete Skill</button>
+                <a href="{% url 'delete_skill' skill.id %}" class="btn btn-danger btn-sm text-decoration-none"> <i
+                        class="fas fa-solid fa-trash"></i></a>
                 </a>
             </div>
         </div>
@@ -29,4 +31,4 @@
     </div>
 </div>
 {% endif %}
-{% endblock content %}
+{% endblock dynamic %}

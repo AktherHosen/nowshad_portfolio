@@ -4,6 +4,10 @@ from .forms import ProjectForm,ReviewForm,EditProject
 
 from django.db.models import Avg
 # Create your views here.
+def dashboard_project(request):
+    projects = PortfolioProject.objects.all()
+    user_profile = request.user.userprofile
+    return render(request, 'dashboard_project.html',{'projects':projects, 'user_profile':user_profile})
 
 def portfolio_project(request):
     projects_with_avg_ratings = PortfolioProject.objects.annotate(avg_rating=Avg('projectreview__ratings'))
@@ -16,6 +20,7 @@ def portfolio_project_details(request,project_id):
     return render(request, 'details.html', {'project':project, 'reviews':reviews})
 
 def add_project(request):
+    user_profile = request.user.userprofile
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
@@ -23,10 +28,11 @@ def add_project(request):
             return redirect('projects')
     else:
         form = ProjectForm()
-    return render(request, 'add_project.html', {'form': form})
+    return render(request, 'add_project.html', {'form': form , 'user_profile':user_profile})
 
 def edit_project(request, project_id):
     project = get_object_or_404(PortfolioProject, id=project_id)
+    user_profile = request.user.userprofile
 
     if request.method == 'POST':
         form = EditProject(request.POST, request.FILES, instance=project)
@@ -36,7 +42,7 @@ def edit_project(request, project_id):
     else:
         form = EditProject(instance=project)
 
-    return render(request, 'edit_project.html', {'form': form, 'project': project})
+    return render(request, 'edit_project.html', {'form': form, 'project': project ,'user_profile':user_profile})
 
 def delete_project(request,project_id):
     project = get_object_or_404(PortfolioProject, id=project_id)

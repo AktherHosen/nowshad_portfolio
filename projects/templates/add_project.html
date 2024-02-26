@@ -1,14 +1,18 @@
-{% extends "base.html" %}
+{% extends "dashboard.html" %}
 
-{% block content %}
-<h1 class="text-center fs-2 display-3 text-uppercase mt-3">Add a Project</h1>
-<div class="d-flex justify-content-center align-content-center h-100">
-    <div class="w-75">
+{% block dynamic %}
+<h1 class="text-center fs-3 text-uppercase mt-1">Add a Project</h1>
+<div class="d-flex justify-content-center align-content-center">
+    <div class="w-50">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{form}}
-            <button class="btn btn-outline-success mt-2" type="submit">Add Project</button>
+            <div class="w-100">
+                <button class="btn  mt-2 w-100" style="background-color: #7163CA; color: #fff;" type="submit">
+                    Add Project <i class="fas fa-solid fa-plus"></i>
+                </button>
+            </div>
         </form>
     </div>
 </div>
-{% endblock content %}
+{% endblock dynamic %}

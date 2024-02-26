@@ -19,7 +19,7 @@ def register(request):
             except UserProfile.DoesNotExist:
                 user_profile = UserProfile(user=user, profile_image=profile_image)
                 user_profile.save()
-            return redirect('profile')
+            return redirect('dashboard')
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
@@ -31,7 +31,7 @@ def user_login(request):
         user = authenticate(username=user_name, password=password)
         if user is not None:
             login(request, user)
-            return redirect('profile')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid User. Please try again.')
 
@@ -41,16 +41,15 @@ def user_logout(request):
     logout(request)
     return redirect('home')
 
-def profile(request):
+def dashboard(request):
     if request.user.is_authenticated:
         try:
             user_profile = UserProfile.objects.get(user=request.user)
         except UserProfile.DoesNotExist:
             user_profile = None  
-        return render(request, 'profile.html', {'user_profile': user_profile})
+        return render(request, 'dashboard.html', {'user_profile': user_profile})
     else:
         return redirect('signin')
-    
 
 def edit_profile(request):
     user = request.user
@@ -71,13 +70,15 @@ def edit_profile(request):
         user_form = UserUpdateEditForm(instance=user)
         profile_form = UserProfileEditForm(instance=user_profile)
 
-    return render(request, 'edit_profile.html', {'user_form': user_form, 'profile_form': profile_form})
+    return render(request, 'edit_profile.html', {'user_form': user_form, 'profile_form': profile_form, 'user_profile':user_profile})
 
 def show_skills(request):
     skills = Skill.objects.all()
-    return render(request, 'show_skills.html', {'skills':skills})
+    user_profile = request.user.userprofile
+    return render(request, 'show_skills.html', {'skills':skills, 'user_profile':user_profile})
 
 def add_skill(request):
+    user_profile = request.user.userprofile
     if request.method == 'POST':
         form = SkillForm(request.POST)
         if form.is_valid():
@@ -86,11 +87,11 @@ def add_skill(request):
     else:
         form = SkillForm()
     
-    return render(request, 'add_skill.html', {'form': form})
+    return render(request, 'add_skill.html', {'form': form, 'user_profile':user_profile})
 
 def edit_skill(request, skill_id):
     skill = get_object_or_404(Skill, pk=skill_id)
-
+    user_profile = request.user.userprofile
     if request.method == 'POST':
         form = EditSkill(request.POST, instance=skill)
         if form.is_valid():
@@ -99,7 +100,7 @@ def edit_skill(request, skill_id):
     else:
         form = EditSkill(instance=skill)
 
-    return render(request, 'edit_skill.html', {'form': form, 'skill': skill})
+    return render(request, 'edit_skill.html', {'form': form, 'skill': skill,'user_profile':user_profile})
 
 def delete_skill(request,skill_id):
     skill = get_object_or_404(Skill, pk=skill_id)
@@ -107,8 +108,9 @@ def delete_skill(request,skill_id):
     return redirect('show_skills')
 
 def all_messages(request):
+    user_profile = request.user.userprofile
     messages = ContactMessage.objects.all()
-    return render(request, 'messages.html',{'messages':messages})
+    return render(request, 'messages.html',{'messages':messages,'user_profile':user_profile})
 
 def delete_message(request,message_id):
     blog = get_object_or_404(ContactMessage, id=message_id)
@@ -117,6 +119,7 @@ def delete_message(request,message_id):
 
 
 def upload_resume(request):
+    user_profile = request.user.userprofile
     if request.method == 'POST':
         form = ResumeForm(request.POST, request.FILES)
 
@@ -131,4 +134,4 @@ def upload_resume(request):
     else:
         form = ResumeForm()
 
-    return render(request, 'resume_upload.html', {'form': form})
+    return render(request, 'resume_upload.html', {'form': form, 'user_profile':user_profile})

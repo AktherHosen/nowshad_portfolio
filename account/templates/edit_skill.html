@@ -1,15 +1,19 @@
-{% extends "base.html" %}
+{% extends "dashboard.html" %}
 
-{% block content %}
+{% block dynamic %}
 {% if request.user.is_staff %}
-<h1 class="text-center fs-2 display-3 text-uppercase mt-3">Edit Skill</h1>
+<h1 class="text-center fs-3 text-uppercase">Edit Skill</h1>
 
 <div class="d-flex justify-content-center align-items-center">
     <div class="w-50">
         <form method="post">
             {% csrf_token %}
             {{form}}
-            <button type="submit" class="btn btn-outline-warning">Edit Skill</button>
+            <div class="w-100">
+                <button class="btn mt-2 w-100" style="background-color: #7163CA; color: #fff;" type="submit">
+                    Edit Skill <i class="fas fa-solid fa-pen"></i>
+                </button>
+            </div>
         </form>
     </div>
 </div>
@@ -21,4 +25,4 @@
     </div>
 </div>
 {% endif %}
-{% endblock content %}
+{% endblock dynamic %}
