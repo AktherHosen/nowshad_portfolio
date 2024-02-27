@@ -1,3 +1,22 @@
+.hire-btn {
+  background: rgba(113, 99, 186, 255);
+  color: #fff;
+  border: 0;
+  outline: 0;
+  padding: 10px 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.resume-btn {
+  background: #00000058;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  padding: 10px 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
 * {
   margin: 0;
   padding: 0;
@@ -94,4 +113,14 @@
 }
 .sub a:hover > ul {
   display: block;
+}
+
+/* banner css */
+
+.banner-wrapper {
+  padding-top: 6.875rem;
+  z-index: 1;
+}
+
+.banner-wrapper .banner-content {
 }
