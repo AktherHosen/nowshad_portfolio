@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm fixed-top" style="height: 70px;">
         <div class="container">
-            <a class="navbar-brand text-uppercase fw-medium" href="{% url 'home' %}">
+            <a class="navbar-brand text-uppercase fw-medium" style="color: #7163BA;" href="{% url 'home' %}">
                 < 4KTH3R />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -80,7 +80,7 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container mt-5">
         {% block content %}
 
         {% endblock content %}
