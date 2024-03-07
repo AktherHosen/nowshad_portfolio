@@ -130,7 +130,7 @@ def upload_resume(request):
                 existing_resume.delete()
 
             form.save()
-            return redirect('profile')
+            return redirect('dashboard')
     else:
         form = ResumeForm()
 
