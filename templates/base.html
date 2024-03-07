@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm fixed-top" style="height: 65px;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm fixed-top" style="min-height: 70;">
         <div class="container">
             <a class="navbar-brand text-uppercase fw-medium" style="color: #7163BA;" href="{% url 'home' %}">
                 < 4KTH3R />
@@ -25,7 +25,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                     {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link text-uppercase" aria-current="page" href="{% url 'home' %}">Home</a>
@@ -40,10 +40,15 @@
                         <a class="nav-link text-uppercase" href="{% url 'contact' %}">Contact</a>
                     </li>
                     <li class="dropdown">
-                        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Hello {{request.user.first_name}}
+                        <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if user_profile.profile_image %}
+                            <img src="{{ user_profile.profile_image.url }}" alt="Profile Image" class="dropdown-toggle"
+                                style="height: 40px; border-radius: 50%;" />
+                            {% else %}
+                            <p>No profile image available</p>
+                            {% endif %}
                         </button>
+
                         <ul class="dropdown-menu">
                             <li class="">
                                 <a class="dropdown-item text-uppercase text-center"

@@ -113,7 +113,9 @@ nav {
 .header-title {
   color: rgba(113, 99, 186, 255);
 }
-
+.container-heading {
+  margin-top: 100px;
+}
 .card-container {
   background-color: #fff;
   padding: 2rem;
@@ -156,7 +158,7 @@ nav {
 .img-container img {
   width: 100%;
   object-fit: cover;
-  height: auto;
+  height: 100%;
   border-radius: 15px;
 }
 .img-container,
@@ -165,8 +167,23 @@ nav {
 }
 /* LOGIN STYLES END */
 
+/* REVIEW PAGE  */
+.review-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 430px;
+  padding: 10px;
+}
+.review-form {
+  width: 60%;
+}
+/* REVIEW PAGE END  */
 /* MEDIA QUERIES */
 @media screen and (max-width: 640px) {
+  .container-heading {
+    margin-top: 80px;
+  }
   .login-container {
     flex-direction: column;
     height: auto;
@@ -175,10 +192,12 @@ nav {
   .form-container {
     width: 90%;
   }
-  .contact-form-container {
+  .contact-form-container,
+  .review-form-container {
     flex-direction: column;
   }
-  .form {
+  .form,
+  .review-form {
     width: 90%;
   }
 }

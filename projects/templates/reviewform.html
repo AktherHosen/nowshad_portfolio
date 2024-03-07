@@ -1,23 +1,26 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 {% if error %}
+
+
 <div class="alert alert-danger" role="alert">
     {{error}}
 </div>
 {% endif %}
-<h1 class="text-center fs-2 display-3 text-uppercase mt-3">Add a review</h1>
-<div class="d-flex justify-content-center align-content-center h-100">
-    <div class="w-50">
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{form}}
-            <div class="w-100">
+<div style="margin-top: 100px;">
+    <h1 class="text-center fs-2 display-3 text-uppercase" style="margin-top: 100px;">Add a review
+    </h1>
+
+    <div class="review-form-container">
+        <div class="review-form">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form}}
                 <button class="btn  mt-2 w-100" style="background-color: #7163CA; color: #fff;" type="submit">
                     Add Review <i class="fas fa-solid fa-plus"></i>
                 </button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-{% endblock content %}
+    {% endblock content %}
