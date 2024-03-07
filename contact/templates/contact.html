@@ -2,12 +2,12 @@
 
 {% block content %}
 <h1 class="text-center fs-2 display-3 text-uppercase" style="margin-top: 100px;">Contact</h1>
-<div class="d-flex justify-content-center align-content-center h-100 mt-3">
-    <div class="w-50">
+<div class="contact-form-container">
+    <div class="form">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{form}}
-            <button class="btn btn-outline-success mt-2" type="submit">Send Message</button>
+            <button class="primary-btn mt-2" type="submit">Send Message</button>
         </form>
     </div>
 </div>

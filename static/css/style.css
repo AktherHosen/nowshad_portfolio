@@ -10,6 +10,15 @@ nav {
   font-weight: 500;
   cursor: pointer;
 }
+.primary-btn {
+  background: rgba(113, 99, 186, 255);
+  color: #fff;
+  border: 0;
+  outline: 0;
+  padding: 10px 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
 
 .resume-btn {
   background: #00000058;
@@ -124,6 +133,51 @@ nav {
   padding-top: 6.875rem;
   z-index: 1;
 }
+/* CONTACT FORM  */
+.contact-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+}
+.form {
+  width: 60%;
+}
+/* CONTACT FORM END */
+/* LOGIN STYLES  */
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 450px;
+  padding: 10px;
+}
+.img-container img {
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+  border-radius: 15px;
+}
+.img-container,
+.form-container {
+  width: 48%;
+}
+/* LOGIN STYLES END */
 
-.banner-wrapper .banner-content {
+/* MEDIA QUERIES */
+@media screen and (max-width: 640px) {
+  .login-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .img-container,
+  .form-container {
+    width: 90%;
+  }
+  .contact-form-container {
+    flex-direction: column;
+  }
+  .form {
+    width: 90%;
+  }
 }

@@ -8,6 +8,14 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control mb-2'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control mb-2'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control mb-2'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control mb-2'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control mb-2'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control mb-2'}),
+        }
 
     def save(self, commit=True):
         user = super().save(commit=False)
