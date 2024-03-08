@@ -153,11 +153,6 @@ nav {
   align-items: center;
   border: 1px solid #eaeaea;
 }
-.skill img {
-  width: auto;
-  object-fit: cover;
-  object-position: center;
-}
 .skill:hover {
   box-shadow: 0px 2px 10px 0px #ccc;
   border: 1px solid transparent;
@@ -410,7 +405,6 @@ nav {
   }
   .skill-container {
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
   }
 }
 
