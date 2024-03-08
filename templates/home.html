@@ -42,10 +42,10 @@
             <div class="col-lg-5 order-lg-2 order-1">
                 <div class="d-flex justify-content-center mt-5">
                     {% if user.is_authenticated %}
-                    <img src="{{ user_profile.profile_image.url }}" class="img-fluid rounded-5" style="height: 400px;"
+                    <img src="{{ user_profile.profile_image.url }}" class="w-100 rounded-4" style="height: 400px;"
                         alt="User Profile Image">
                     {% else %}
-                    <img src="{% static '/images/profile/banner.jpg' %}" class="img-fluid" style="height: 400px; "
+                    <img src="{% static '/images/profile/banner.jpg' %}" class="w-100" style="height: 400px; "
                         alt="User Profile Image">
                     {% endif %}
                 </div>

@@ -103,3 +103,5 @@ def delete_review(request,review_id):
     review = get_object_or_404(ProjectReview, pk=review_id)
     review.delete()
     return redirect('projects')
+
+    
