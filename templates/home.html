@@ -55,10 +55,11 @@
     </div>
 </section>
 
-<h1 class="text-center fs-2 display-3  mt-3">My Skills</h1>
+
 {% for skill in skills %}
-<div class="d-flex justify-content-center">
-    <div class="w-100">
+<div class="d-flex justify-content-between flex-column align-items-center flex-md-row gap-5 p-1 p-md-3">
+    <div class="skills-container">
+        <h2 class="section-heading-skills p-0 text-start">Skills</h2>
         <h2 class="fs-5 display-3">{{skill.name}}</h2>
         <div class="progress mb-2" role="progressbar" aria-label="Skill Progress" aria-valuenow="{{ skill.percentage }}"
             aria-valuemin="0" aria-valuemax="100">
@@ -66,10 +67,30 @@
             </div>
         </div>
     </div>
+    <div class="education-container">
+        <h2 class="section-heading-education">Education</h2>
+        <div class="education-box-container">
+            <div class="education-box">
+                <h4>2020 - 2024</h4>
+                <h3>Bachelor Degree</h3>
+                <p>BGC TRUST UNIVERSITY BANGLADESH</p>
+            </div>
+            <div class="education-box ">
+                <h4>2017 - 2019</h4>
+                <h3>Higher Secondary Certificate</h3>
+                <p>HAZERA TAJU UNIVERSITY COLLEGE</p>
+            </div>
+            <div class="education-box">
+                <h4>2015 - 2016</h4>
+                <h3>Secondary School Certificate</h3>
+                <p>AYUB BIBI CITY CORP. SCHOOL & COLLEGE</p>
+            </div>
+        </div>
+    </div>
 </div>
 {% endfor %}
 
-<h1 class="text-center fs-2 display-3  mt-3">Projects</h1>
+<h2 class="text-center mt-3 text-uppercase" style="color: #7163ba;">Projects</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
     {% for project in projects %}
     <div class="col">

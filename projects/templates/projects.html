@@ -13,7 +13,7 @@
                 <img src="{{ project.screenshoot.url }}" alt="">
             </div>
             <div class="project-text">
-                <span> {{ project.stars_html|safe }}</span>
+                <span> {{ project.stars_html|safe }} / {{project.category}}</span>
                 <a href="#" class="blog-title">{{ project.title }}</a>
                 <a href="{% url 'details' project.id %}">See Detail</a>
             </div>
