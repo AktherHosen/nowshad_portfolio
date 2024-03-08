@@ -139,17 +139,24 @@ nav {
 /* SKILLS & EDUCATION */
 .skill-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 20px;
+}
+.skill h2 {
+  font-size: 1.2rem;
 }
 .skill {
   height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   align-items: center;
   border: 1px solid #eaeaea;
+}
+.skill img {
+  width: auto;
+  object-fit: cover;
+  object-position: center;
 }
 .skill:hover {
   box-shadow: 0px 2px 10px 0px #ccc;
@@ -400,6 +407,10 @@ nav {
   .education-container {
     width: 100%;
     padding: 10px;
+  }
+  .skill-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
   }
 }
 
