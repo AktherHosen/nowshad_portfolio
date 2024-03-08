@@ -8,10 +8,11 @@ class BlogForm(ModelForm):
         self.fields['title'].widget.attrs.update({'class': 'form-control mb-2'})
         self.fields['description'].widget.attrs.update({'class': 'form-control mb-2'})
         self.fields['blog_image'].widget.attrs.update({'class': 'form-control mb-2'})
+        self.fields['url'].widget.attrs.update({'class': 'form-control mb-2'})
         
     class Meta:
         model = Blogs
-        fields = ['title', 'description', 'blog_image']
+        fields = ['title', 'description', 'blog_image', 'url']
         widgets = {
             'description': Textarea(attrs={'rows': 4, 'class': 'form-control'}),
         }
@@ -23,7 +24,8 @@ class BlogForm(ModelForm):
         labels = {
                 'title' : ('Write Blog Title'),
                 'description' : ('Write Blog Description'),
-                'blog_image' : ('Add Blog Image')
+                'blog_image' : ('Add Blog Image'),
+                'url' : ('Add URL'),
             }
 class EditBlogForm(forms.ModelForm):
     class Meta:
@@ -34,9 +36,12 @@ class EditBlogForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control mb-2'}),
             'description': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
             'blog_image': forms.ClearableFileInput(attrs={'class': 'form-control mb-2'}),
+            'url': forms.URLInput(attrs={'class': 'form-control mb-2'}),
+            
         }
         labels = {
             'title': 'Edit Blog Title',
             'description': 'Edit Blog Description',
             'blog_image': 'Edit Blog Image',
+            'url': 'Edit URL',
         }

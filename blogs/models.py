@@ -7,6 +7,6 @@ class Blogs(models.Model):
     blog_image = models.ImageField(upload_to='images/blogs')
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
-    
+    url = models.URLField( blank = True, null = True)
     def __str__(self):
         return self.title
