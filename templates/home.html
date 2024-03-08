@@ -54,19 +54,47 @@
 
     </div>
 </section>
-
-
-{% for skill in skills %}
-<div class="d-flex justify-content-between flex-column align-items-center flex-md-row gap-5 p-1 p-md-3">
-    <div class="skills-container">
-        <h2 class="section-heading-skills p-0 text-start">Skills</h2>
+<h2 class="section-heading-education p-0 mt-3 mb-3 text-center">Skills I have</h2>
+<div class="skill-container">
+    <div class="skill">
+        <img src="{% static 'images/icons/html-5.png' %}" style="height: 70px;" alt="">
+        <h2>HTML</h2>
+    </div>
+    <div class="skill">
+        <img src="{% static 'images/icons/css-3.png' %}" style="height: 70px;" alt="">
+        <h2>CSS</h2>
+    </div>
+    <div class="skill">
+        <img src="{% static 'images/icons/js.png' %}" style="height: 70px;" alt="">
+        <h2>JavaScript</h2>
+    </div>
+    <div class="skill">
+        <img src="{% static 'images/icons/python.png' %}" style="height: 70px;" alt="">
+        <h2>Python</h2>
+    </div>
+    <div class="skill">
+        <img src="{% static 'images/icons/django.png' %}" style="height: 70px;" alt="">
+        <h2>Django</h2>
+    </div>
+    <div class="skill">
+        <img src="{% static 'images/icons/mysql.png' %}" style="height: 70px;" alt="">
+        <h2>MySQL</h2>
+    </div>
+</div>
+<!-- <div class="skills-container">
+    
+    {% for skill in skills %}
+    <div>
         <h2 class="fs-5 display-3">{{skill.name}}</h2>
         <div class="progress mb-2" role="progressbar" aria-label="Skill Progress" aria-valuenow="{{ skill.percentage }}"
             aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar bg-secondary" style="width: {{ skill.percentage }}%">{{ skill.percentage }}%
+            <div class="progress-bar bg-secondary" style="width: {{ skill.percentage }}%">{{ skill.percentage}}%
             </div>
         </div>
     </div>
+    {% endfor %}
+</div> -->
+<div class="d-flex justify-content-between flex-column flex-md-row gap-5 mt-5">
     <div class="education-container">
         <h2 class="section-heading-education p-0 text-start">Education</h2>
         <div class="education-box-container">
@@ -87,8 +115,17 @@
             </div>
         </div>
     </div>
+    <div class="education-container">
+        <h2 class="section-heading-education p-0 text-start">Experiences</h2>
+        <div class="education-box-container">
+            <div class="education-box">
+                <h4>2024 - 2024</h4>
+                <h3>Software Engineer Intern</h3>
+                <p>Alchemy Software Solution</p>
+            </div>
+        </div>
+    </div>
 </div>
-{% endfor %}
 
 <h2 class="text-center mt-3 text-uppercase" style="color: #7163ba;">Projects</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
