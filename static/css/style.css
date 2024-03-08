@@ -197,6 +197,7 @@ nav {
 }
 
 .blog-heading span {
+  margin-top: 20px;
   color: #f33c3c;
 }
 
@@ -218,7 +219,7 @@ nav {
   width: 350px;
   height: 460px;
   background-color: #ffffff;
-  border: 2px solid #ececec;
+  border: 1px solid #ececec;
   margin: 20px;
 }
 
