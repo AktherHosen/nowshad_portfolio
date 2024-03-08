@@ -1,32 +1,25 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-<h1 class="text-center fs-2 display-3" style="margin-top: 100px;">All Projects</h1>
-<div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
-    {% for project in projects %}
-    <div class="col">
-        <div class="card">
-            <img src="{{ project.screenshoot.url }}" class="card-img-top" style="height: 300px;" alt="">
-            <div class="card-body">
-                <a href="{% url 'details' project.id %}" class="text-decoration-none text-secondary">
-                    <h5 class="card-title">{{ project.title }}</h5>
-                </a>
-                <p class="text-warning">
-                    {{ project.stars_html|safe }}
-                </p>
-
-
-
-                {% if request.user.is_authenticated %}
-                <a href="{% url 'edit_project' project.id %}" class="btn btn-sm text-decoration-none"
-                    style="background-color: #7163CA; color: #fff;">
-                    <i class=" fas fa-solid fa-pen"></i>
-                </a>
-                <a href="{% url 'delete_project' project.id %}" class="btn btn-danger btn-sm text-decoration-none"> <i
-                        class="fas fa-solid fa-trash"></i></a>
-                {% endif %}
+<section id="project">
+    <div class="heading">
+        <span>My All Projects</span>
+        <h3>My Projects</h3>
+    </div>
+    <div class="project-container">
+        {% for project in projects %}
+        <div class="project-box">
+            <div class="project-img">
+                <img src="{{ project.screenshoot.url }}" alt="">
+            </div>
+            <div class="project-text">
+                <span> {{ project.stars_html|safe }}</span>
+                <a href="#" class="blog-title">{{ project.title }}</a>
+                <a href="{% url 'details' project.id %}">See Detail</a>
             </div>
         </div>
+        {% endfor %}
+
     </div>
-    {% endfor %}
-</div>
+</section>
 {% endblock content %}
