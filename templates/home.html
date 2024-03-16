@@ -1,128 +1,148 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+<section class="featured-box" id="home">
+    <div class="featured-text">
+        <div class="featured-text-card">
+            <span>Akther Hosen</span>
+        </div>
+        <div class="featured-name">
+            <p>I'm <span class="typedText"> Software Engineer</span></p>
+        </div>
+        <div class="featured-text-info">
+            <p>Experienced software developer with a passion for creating visually stunning and user-friendly
+                solutions.</p>
+        </div>
+        <div class="featured-text-btn">
+            <a href="mailto:nowshadbgc165@gmail.com" class="text-decoration-none text-white " target="_blank">
+                <button class="btns blue-btn">Hire Me</button>
+            </a>
 
-
-<section id="home" class="banner_wrapper">
-    <div class="container">
-        <div class="row d-flex justify-content-around align-items-center">
-            <div class="col-lg-7 order-lg-1 order-2 banner-content">
-                <div class="mt-5">
-                    <h2 class="text-uppercase position-relative">Hello</h2>
-                    <h1 class="text-uppercase position-relative mt-3 mb-3">I am Md Akther Hosen</h1>
-                    <h5 class="text-uppercase mb-3">Backend Developer</h5>
-                    <div class="mt-4">
-                        <a href="https://www.facebook.com/nirjhor.nowshad/" target="_blank"
-                            class="text-decoration-none">
-                            <img src="{% static 'images/social/facebook.png' %}" style="height: 30px;" alt="">
-                        </a>
-                        <a href="https://github.com/akther2034165/" target="_blank" class="text-decoration-none ms-2">
-                            <img src="{% static 'images/social/github.png' %}" style="height: 30px;" alt="">
-                        </a>
-                        <a href="https://www.linkedin.com/in/md-akther-hosen-aa82a9284" target="_blank"
-                            class="text-decoration-none ms-2">
-                            <img src="{% static 'images/social/linkedin.png' %}" style="height: 30px;" alt="">
-                        </a>
-                    </div>
-                    <br>
-                    <div>
-                        <a href="mailto:nowshadbgc165@gmail.com" class="text-decoration-none" target="_blank">
-                            <button class="mt-2 text-uppercase hire-btn"> Hire Me</button>
-                        </a>
-
-                        {% if resume %}
-                        <a href="{{ resume.file.url }}" class="text-decoration-none " target="_blank"> <button
-                                class="mt-2 text-uppercase resume-btn">GET Resume</button></a>
+            {% if resume %}
+            <a href="{{ resume.file.url }}" class="text-decoration-none text-white " target="_blank"> <button
+                    class="btns">
+                    Download CV <i class="fa-solid fa-download"></i></button>
+                {% else %}
+                <p>No resume uploaded yet.</p>
+                {% endif %}
+            </a>
+        </div>
+        <div class="social-icons">
+            <div class="icon">
+                <a href="https://github.com/akther2034165/" target="_blank" class="text-decoration-none text-black">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+            <div class="icon">
+                <a href="https://www.linkedin.com/in/md-akther-hosen-aa82a9284" target="_blank"
+                    class="text-decoration-none text-black">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+            <div class="icon">
+                <a href="https://www.facebook.com/nirjhor.nowshad/" target="_blank"
+                    class="text-decoration-none text-black">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            </div>
+            <div class="icon"><i class="fa-brands fa-instagram"></i></div>
+        </div>
+    </div>
+    <div class="featured-image">
+        <div class="image">
+            {% if user.is_authenticated %}
+            <img src="{{ user_profile.profile_image.url }}" alt="User Profile Image">
+            {% else %}
+            <img src="{% static '/images/profile/banner.jpg' %}" alt="User Profile Image">
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!-- about  -->
+<section class="section" id="about">
+    <div class="top-header">
+        <h1>About Me</h1>
+    </div>
+    <div class="section-row">
+        <div class="section-col">
+            <div class="about-info">
+                <h3>My Introduction</h3>
+                <p>I am well-versed in HTML, CSS and JavaScript, and other cutting edge frameworks and
+                    libraries, which allows me to implement interactive features. Addionally I have experience
+                    working with backend framework like Django and Django REST Framework. </p>
+                <div class="about-btn">
+                    {% if resume %}
+                    <a href="{{ resume.file.url }}" class="text-decoration-none text-white " target="_blank"> <button
+                            class="btn">
+                            Download CV <i class="fa-solid fa-download"></i></button>
                         {% else %}
                         <p>No resume uploaded yet.</p>
                         {% endif %}
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 order-lg-2 order-1">
-                <div class="d-flex justify-content-center mt-5">
-                    {% if user.is_authenticated %}
-                    <img src="{{ user_profile.profile_image.url }}" class="w-100 rounded-4" style="height: 400px;"
-                        alt="User Profile Image">
-                    {% else %}
-                    <img src="{% static '/images/profile/banner.jpg' %}" class="w-100" style="height: 400px; "
-                        alt="User Profile Image">
-                    {% endif %}
+                    </a>
                 </div>
             </div>
         </div>
-
+        <div class="section-col">
+            <div class="skills-box">
+                <div class="skills-header">
+                    <h3>Frontend</h3>
+                </div>
+                <div class="skills-list">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>Bootstrap</span>
+                    <span>Tailwind CSS</span>
+                    <span>Daisy UI</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
+            <div class="skills-box">
+                <div class="skills-header">
+                    <h3>Backend</h3>
+                </div>
+                <div class="skills-list">
+                    <span>Python</span>
+                    <span>Django</span>
+                    <span>C++</span>
+                </div>
+            </div>
+            <div class="skills-box">
+                <div class="skills-header">
+                    <h3>Database</h3>
+                </div>
+                <div class="skills-list">
+                    <span>MySQL</span>
+                    <span>PostgreSQL</span>
+                    <span>MongoDB</span>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-<h2 class="section-heading-education p-0 mt-3 mb-3 text-center">Skills I have</h2>
-<div class="skill-container">
-    <div class="skill">
-        <img src="{% static 'images/icons/html-5.png' %}" alt="">
+<!-- project box  -->
+<section class="section" id="project">
+    <div class="top-header">
+        <h1>What I Do</h1>
     </div>
-    <div class="skill">
-        <img src="{% static 'images/icons/css-3.png' %}" alt="">
-    </div>
-    <div class="skill">
-        <img src="{% static 'images/icons/bootstrap.png' %}" alt="">
-    </div>
-    <div class="skill">
-        <img src="{% static 'images/icons/tailwind.png' %}" alt="">
-    </div>
-    <div class="skill">
-        <img src="{% static 'images/icons/js.png' %}" alt="">
-    </div>
-    <div class="skill">
-        <img src="{% static 'images/icons/python.png' %}" alt="">
-    </div>
-    <div class="skill">
-        <img src="{% static 'images/icons/django.png' %}" alt="">
-    </div>
-    <div class="skill">
-        <img src="{% static 'images/icons/mysql.png' %}" alt="">
-    </div>
-    <div class="skill">
-        <img src="{% static 'images/icons/postgresql.png' %}" alt="">
-
-    </div>
-    <div class="skill">
-        <img src="{% static 'images/icons/drf.png' %}" alt="">
-
-    </div>
-</div>
-<div class="d-flex justify-content-between flex-column flex-md-row gap-5 mt-5">
-    <div class="education-container">
-        <h2 class="section-heading-education p-0 text-start">Education</h2>
-        <div class="education-box-container">
-            <div class="education-box">
-                <h4>2020 - 2024</h4>
-                <h3>Bachelor Degree</h3>
-                <p>BGC TRUST UNIVERSITY BANGLADESH</p>
-            </div>
-            <div class="education-box ">
-                <h4>2017 - 2019</h4>
-                <h3>Higher Secondary Certificate</h3>
-                <p>HAZERA TAJU UNIVERSITY COLLEGE</p>
-            </div>
-            <div class="education-box">
-                <h4>2015 - 2016</h4>
-                <h3>Secondary School Certificate</h3>
-                <p>AYUB BIBI CITY CORP. SCHOOL & COLLEGE</p>
-            </div>
+    <div class="wid-container">
+        <div class="wid-box">
+            <h3>Web Design</h3>
+            <label>15+ Finished Projects</label>
+        </div>
+        <div class="wid-box">
+            <h3>Web Development</h3>
+            <label>25+ Happy Client</label>
+        </div>
+        <div class="wid-box">
+            <h3>Backend Development</h3>
+            <label>2+ years</label>
         </div>
     </div>
-    <div class="education-container">
-        <h2 class="section-heading-education p-0 text-start">Experiences</h2>
-        <div class="education-box-container">
-            <div class="education-box">
-                <h4>2024 - 2024</h4>
-                <h3>Software Engineer Intern</h3>
-                <p>Alchemy Software Solution</p>
-            </div>
-        </div>
-    </div>
-</div>
+</section>
 
-<h2 class="text-center mt-3 text-uppercase" style="color: #7163ba;">Projects</h2>
+<div class="top-header">
+    <h1>Projects</h1>
+</div>
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
     {% for project in projects %}
     <div class="col">
@@ -137,4 +157,5 @@
     </div>
     {% endfor %}
 </div>
+
 {% endblock content %}

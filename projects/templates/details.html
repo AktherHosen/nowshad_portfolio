@@ -1,53 +1,55 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="mb-3" style="width: 100%;">
-    <h1 class="text-center fs-2 display-3 container-heading">Details</h1>
-    <div class="p-3">
-        <div class="row mt-3">
-            <div class="col-12 col-md-6 col-lg-4 p-3">
-                <img src="{{project.screenshoot.url}}" style="height: 400px; width: 100%;" class="img-fluid rounded"
-                    alt="...">
-            </div>
-            <div class="col-12 col-md-6 col-lg-8 p-3">
-                <div class="card-body">
-                    <h1 class="card-title fs-2 display-2">{{project.title}}</h1>
-                    <p class="card-text fs-5 display-4 mt-2">
-                        <span class="fw-normal"></span>
-                        {{project.description}}
-                    </p>
-                    <p class="card-text fs-5 display-4"><span class="fw-normal">Technologies :</span>
-                        <small>{{project.technologies}}
-                    </p></small>
-                    <p class="card-text fs-5 display-4"><span class="fw-normal">Category :</span>
-                        <small>{{project.category}}
-                    </p></small>
-                    <a href="{{project.project_url}}" target="_blank" class="text-decoration-none text-dark"> Live <i
-                            class="fas fa-solid fa-globe"></i> </a>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="fs-5 mt-3 text-uppercase text-start">Reviews</h3>
-                        <a href="{% url 'create_review' project.id %}" target="_blank"
-                            class="text-decoration-none fs-6">
-                            Add
-                            new
-                            <i class="fas fa-solid fa-pen"></i>
-                    </div>
-                    {% for review in reviews %}
-                    <div class="border border-1 rounded shadow-sm mb-2">
-                        <div class="p-3">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="text-warning">{{ review.stars_html|safe }}</p>
-                                {% if request.user.is_authenticated %}
-                                <a href="{% url 'delete_review' review.id %}"
-                                    class="btn btn-danger btn-sm text-decoration-none"> <i
-                                        class="fas fa-solid fa-trash"></i></a>
-                                {% endif %}
-                            </div>
-                            <p> {{review.reviews}}</p>
+<div>
+    <div class="mb-3" style="width: 100%;">
+        <h1 class="text-center fs-2 display-3 container-heading">Details</h1>
+        <div class="p-3">
+            <div class="row mt-3">
+                <div class="col-12 col-md-6 col-lg-4 p-3">
+                    <img src="{{project.screenshoot.url}}" style="height: 400px; width: 100%;" class="img-fluid rounded"
+                        alt="...">
+                </div>
+                <div class="col-12 col-md-6 col-lg-8 p-3">
+                    <div class="card-body">
+                        <h1 class="card-title fs-2 display-2">{{project.title}}</h1>
+                        <p class="card-text fs-5 display-4 mt-2">
+                            <span class="fw-normal"></span>
+                            {{project.description}}
+                        </p>
+                        <p class="card-text fs-5 display-4"><span class="fw-normal">Technologies :</span>
+                            <small>{{project.technologies}}
+                        </p></small>
+                        <p class="card-text fs-5 display-4"><span class="fw-normal">Category :</span>
+                            <small>{{project.category}}
+                        </p></small>
+                        <a href="{{project.project_url}}" target="_blank" class="text-decoration-none text-dark"> Live
+                            <i class="fas fa-solid fa-globe"></i> </a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="fs-5 mt-3 text-uppercase text-start">Reviews</h3>
+                            <a href="{% url 'create_review' project.id %}" target="_blank"
+                                class="text-decoration-none fs-6">
+                                Add
+                                new
+                                <i class="fas fa-solid fa-pen"></i>
                         </div>
+                        {% for review in reviews %}
+                        <div class="border border-1 rounded shadow-sm mb-2">
+                            <div class="p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-warning">{{ review.stars_html|safe }}</p>
+                                    {% if request.user.is_authenticated %}
+                                    <a href="{% url 'delete_review' review.id %}"
+                                        class="btn btn-danger btn-sm text-decoration-none"> <i
+                                            class="fas fa-solid fa-trash"></i></a>
+                                    {% endif %}
+                                </div>
+                                <p> {{review.reviews}}</p>
+                            </div>
 
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
