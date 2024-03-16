@@ -26,7 +26,9 @@ body {
 html {
   scroll-behavior: smooth;
 }
-
+nav {
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 ::-webkit-scrollbar {
   width: 10px;
   border-radius: 25px;
@@ -84,58 +86,6 @@ h3 {
 }
 body {
   background: var(--body-color);
-}
-.header-container {
-  position: relative;
-  width: 100%;
-}
-
-/* navbar styles  */
-nav {
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 90px;
-  line-height: 90px;
-  background: var(--body-color);
-  padding-inline: 9vw;
-  transition: 0.3s;
-  z-index: 100;
-}
-.nav-logo {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.nav-logo img {
-  height: 70px;
-}
-
-.nav-menu,
-.nav-menu-list {
-  display: flex;
-}
-.nav-menu-list .nav-list {
-  list-style: none;
-  position: relative;
-}
-
-.nav-list > a {
-  text-decoration: none;
-  color: var(--text-color-second);
-  font-weight: 500;
-  padding-inline: 15px;
-  margin-inline: 20px;
-}
-
-.nav-menu-btn {
-  display: none;
-}
-.nav-menu-btn i {
-  font-size: 28px;
-  cursor: pointer;
 }
 /* container  */
 .wrapper {
@@ -697,13 +647,13 @@ footer {
 /* REVIEW PAGE END  */
 /* BLOG SECTION  */
 #blog,
-#project {
+#projects {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 70px;
 }
 
 .heading span {
