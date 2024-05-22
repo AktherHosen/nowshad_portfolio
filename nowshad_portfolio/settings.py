@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-+*qhx@y3y7693uir!90bjapm4#jnj+h@071kjm+^o94_6dyq8c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -67,22 +67,22 @@ WSGI_APPLICATION = 'nowshad_portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD' : '4CB-gC2CDb6gb5bDBeG-Ec1f55Da-A14',
-        'HOST' : 'viaduct.proxy.rlwy.net',
-        'PORT' : '47510',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD' : '4CB-gC2CDb6gb5bDBeG-Ec1f55Da-A14',
+#         'HOST' : 'viaduct.proxy.rlwy.net',
+#         'PORT' : '47510',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
